@@ -45,28 +45,6 @@
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
     <link href="assets/css/signup.css" rel="stylesheet" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #37517e;
-      }
-
-      .login-container button {
-        width: 100%;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 4px;
-        background-color: #007bff;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body class="index-page">
     <header id="header" class="header d-flex align-items-center fixed-top">
@@ -74,12 +52,10 @@
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
         <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
           <img
             src="assets/img/masonry-portfolio/stethoscope-icon.webp"
             alt=""
           />
-
           <h1 class="sitename">ParkinHeimer</h1>
         </a>
 
@@ -88,18 +64,17 @@
             <li><a href="/#hero" class="active">Anasayfa</a></li>
             <li><a href="/#about">Hakkımızda</a></li>
             <li><a href="/#services">Hizmetlerimiz</a></li>
-            <!--   <li><a href="#team">Ekibimiz</a></li> -->
             <li class="dropdown">
               <a href="#"
-                ><span>Menü</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
+                ><span>Menü</span
+                ><i class="bi bi-chevron-down toggle-dropdown"></i
               ></a>
               <ul>
                 <li><a href="#">Görüntü Yükle</a></li>
                 <li class="dropdown">
                   <a href="#"
-                    ><span>Sonuçlarım</span>
-                    <i class="bi bi-chevron-down toggle-dropdown"></i
+                    ><span>Sonuçlarım</span
+                    ><i class="bi bi-chevron-down toggle-dropdown"></i
                   ></a>
                   <ul>
                     <li><a href="#">Alzheimer</a></li>
@@ -186,6 +161,60 @@
           body.classList.remove("scrolled");
         }
       });
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const tcKimlik = document.querySelector("#tcKimlik").value;
+          const firstName = document.querySelector("#firstName").value;
+          const lastName = document.querySelector("#lastName").value;
+          const age = document.querySelector("#age").value;
+          const chronicDiseases =
+            document.querySelector("#chronicDiseases").value;
+          const password = document.querySelector("#password").value;
+          const confirmPassword =
+            document.querySelector("#confirmPassword").value;
+
+          // Şifreleri karşılaştır
+          if (password !== confirmPassword) {
+            alert("Şifreler uyuşmuyor!");
+            return;
+          }
+
+          // Token oluşturma (basit bir örnek)
+          const token = btoa(`${tcKimlik}:${new Date().getTime()}`);
+
+          // LocalStorage'a kaydet
+          localStorage.setItem("authToken", token);
+
+          // Form verilerini backend'e gönderme
+          fetch("/login.html", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              tcKimlik,
+              firstName,
+              lastName,
+              age,
+              chronicDiseases,
+              password,
+              token,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                alert("Kayıt başarılı!");
+                window.location.href = "/login.html"; // Yönlendirme
+              } else {
+                alert("Bu TC Kimlik Numarası ile zaten kayıt olunmuş.");
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        });
     </script>
   </body>
 </html>
