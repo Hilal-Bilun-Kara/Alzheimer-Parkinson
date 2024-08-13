@@ -1,0 +1,94 @@
+body {
+  background-color: #f4f7f6;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 20%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+/* Header'ı her zaman üstte tutmak için z-index değeri ayarlanıyor */
+header {
+  z-index: 10;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 30px;
+  border: none;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #37517e;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Form kapsayıcı */
+.login-container,
+.signup-container {
+  position: sticky;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 50%;
+  margin-bottom: 20%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  transition: opacity 0.3s ease;
+}
+body.scrolled .signup-container {
+  margin-top: 150px; /* Kaydırma esnasında daha fazla yukarı kaydırılır */
+  opacity: 1;
+}
+
+.signup-container .login-link,
+.login-container .signup-link {
+  text-align: center;
+  margin-top: 20px;
+}
