@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Görüntü Yükle</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link
+      href="assets/img/masonry-portfolio/stethoscope-icon.webp"
+      rel="icon"
+    />
+    <link
+      href="assets/img/masonry-portfolio/stethoscope-icon.webp"
+      rel="stethoscope-icon"
+    />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <style>
+      /* Genel Sayfa Stili */
+      body {
+        background-color: #37517e; /* Diğer sayfalarla uyumlu arka plan rengi */
+        font-family: Arial, sans-serif; /* Diğer sayfalarda kullanılan font */
+        color: #333; /* Diğer sayfalarda kullanılan yazı rengi */
+        margin: 0;
+        padding: 0;
+        padding-top: 70px; /* Header yüksekliği kadar boşluk */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Üst Bar */
+      header {
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #37517e; /* Üst barın arka plan rengi */
+        color: #fff; /* Üst bar yazı rengi */
+      }
+
+      /* Yükleme Formu Stili */
+      .upload-container {
+        background-color: #fff; /* Form arka plan rengi */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      /* Başlık */
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      /* Buton Stili */
+      button {
+        background-color: #007bff; /* Buton arka plan rengi */
+        color: #fff; /* Buton yazı rengi */
+        padding: 10px 30px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #37517e; /* Hover rengini ayarlayın */
+      }
+    </style>
+  </head>
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img
+            src="assets/img/masonry-portfolio/stethoscope-icon.webp"
+            alt=""
+          />
+
+          <h1 class="sitename">ParkinHeimer</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="/#hero" class="active">Anasayfa</a></li>
+            <li><a href="/#about">Hakkımızda</a></li>
+            <li><a href="/#services">Hizmetlerimiz</a></li>
+            <!--   <li><a href="#team">Ekibimiz</a></li> -->
+            <li class="dropdown">
+              <a href="#"
+                ><span>Menü</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="/folderupload.html">Görüntü Yükle</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>Sonuçlarım</span>
+                    <i class="bi bi-chevron-down toggle-dropdown"></i
+                  ></a>
+                  <ul>
+                    <li><a href="#">Alzheimer</a></li>
+                    <li><a href="#">Parkinson</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/#contact">İletişim</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="btn-getstarted" href="/login.html" id="loginButton"
+          >Üye Ol <b> / </b> Giriş Yap</a
+        >
+      </div>
+    </header>
+    <div class="upload-container">
+      <h1>Görüntü Yükle</h1>
+      <form
+        action="upload_handler.php"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="imageUpload">Görüntü Seçin:</label>
+        <input
+          type="file"
+          id="imageUpload"
+          name="imageUpload"
+          accept="image/*"
+          required
+        />
+        <button type="submit">Yükle</button>
+      </form>
+    </div>
+  </body>
+</html>

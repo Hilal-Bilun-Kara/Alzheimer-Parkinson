@@ -12,6 +12,33 @@ body {
   min-height: 100vh; /* Height yerine min-height kullandık */
 }
 
+.error {
+  color: red;
+  display: none;
+}
+
+.star {
+  color: red;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+}
+
+.password-container i {
+  position: absolute;
+  margin-bottom: 15px;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa; /* İkonun varsayılan rengi */
+}
+
 /* Header */
 header {
   z-index: 10;

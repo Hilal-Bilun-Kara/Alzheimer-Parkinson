@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
       rel="stylesheet"
     />
 
@@ -41,6 +41,10 @@
       rel="stylesheet"
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
@@ -70,7 +74,7 @@
                 ><i class="bi bi-chevron-down toggle-dropdown"></i
               ></a>
               <ul>
-                <li><a href="#">Görüntü Yükle</a></li>
+                <li><a href="/folderupload.html">Görüntü Yükle</a></li>
                 <li class="dropdown">
                   <a href="#"
                     ><span>Sonuçlarım</span
@@ -96,50 +100,67 @@
 
     <div class="signup-container">
       <h1>Üye Ol</h1>
-      <form action="signup_handler.php" method="post">
+      <form
+        action="signup_handler.php"
+        method="post"
+        onsubmit="return validateForm()"
+      >
         <label for="firstName">İsim:</label>
         <input type="text" id="firstName" name="firstName" required />
 
         <label for="lastName">Soyisim:</label>
         <input type="text" id="lastName" name="lastName" required />
 
-        <label for="tcKimlik">TC Kimlik Numarası:</label>
-        <input
-          type="text"
-          id="tcKimlik"
-          name="tcKimlik"
-          maxlength="11"
-          pattern="\d{11}"
+        <label for="poliklinik">İlgili Poliklinik<b class="star">*</b>:</label>
+        <select
+          class="w-100 p-2 mb-2"
+          id="poliklinik"
+          name="poliklinik"
           required
-        />
-
-        <label for="age">Yaş:</label>
-        <input type="number" id="age" name="age" min="0" required />
-
-        <label for="chronicDiseases">Kronik Rahatsızlıklar:</label>
-        <textarea
-          id="chronicDiseases"
-          name="chronicDiseases"
-          placeholder="Örneğin: Alzheimer, Parkinson vb."
-          required
-        ></textarea>
+        >
+          <option value="">Poliklinik seçin...</option>
+          <option value="kardiyoloji">Kardiyoloji</option>
+          <option value="beyin ve sinir cerrahisi">
+            Beyin ve Sinir Cerrahisi
+          </option>
+          <option value="kalp ve damar cerrahisi">
+            Kalp ve Damar Cerrahisi
+          </option>
+          <option value="nöroloji">Nöroloji</option>
+          <option value="klinik nörofizyoloji">Klinik Nörofizyoloji</option>
+          <option value="cerrahi onkolojisi">Cerrahi Onkolojisi</option>
+        </select>
+        <span id="error-message" class="error">
+          Lütfen bir poliklinik seçin.
+        </span>
 
         <label for="password">Şifre:</label>
-        <input type="password" id="password" name="password" required />
+        <div class="password-container">
+          <input type="password" id="password" name="password" required />
+          <i class="fas fa-eye" id="togglePassword"></i>
+        </div>
+        <span id="passwordError" class="error">
+          Şifre en az 8 karakter, bir büyük harf, bir küçük harf ve bir rakam
+          içermelidir.
+        </span>
 
         <label for="confirmPassword">Şifreyi Onaylayın:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          required
-        />
+        <div class="password-container">
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          <i class="fas fa-eye" id="toggleConfirmPassword"></i>
+        </div>
+        <span id="confirmPasswordError" class="error">Şifreler uyuşmuyor.</span>
 
         <button type="submit">Üye Ol</button>
       </form>
 
       <div class="login-link">
-        <p>Zaten hesabınız var mı?<a href="login.html">Giriş Yap</a></p>
+        <p>Zaten hesabınız var mı? <a href="/login.html">Giriş Yap</a></p>
       </div>
     </div>
 
@@ -161,59 +182,84 @@
           body.classList.remove("scrolled");
         }
       });
+
+      function validateForm() {
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const poliklinik = document.getElementById("poliklinik").value;
+
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById(
+          "confirmPasswordError"
+        );
+        const errorMessage = document.getElementById("error-message");
+
+        const passwordPattern =
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+        let isValid = true;
+
+        // Validate password pattern
+        if (!passwordPattern.test(password)) {
+          passwordError.style.display = "block";
+          isValid = false;
+        } else {
+          passwordError.style.display = "none";
+        }
+
+        // Validate confirm password
+        if (password !== confirmPassword) {
+          confirmPasswordError.style.display = "block";
+          isValid = false;
+        } else {
+          confirmPasswordError.style.display = "none";
+        }
+
+        // Validate poliklinik selection
+        if (poliklinik === "") {
+          errorMessage.style.display = "block";
+          isValid = false;
+        } else {
+          errorMessage.style.display = "none";
+        }
+
+        return isValid; // Return false if any validation fails
+      }
+
       document
-        .querySelector("form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
+        .getElementById("togglePassword")
+        .addEventListener("click", function () {
+          const passwordInput = document.getElementById("password");
+          const icon = this;
 
-          const tcKimlik = document.querySelector("#tcKimlik").value;
-          const firstName = document.querySelector("#firstName").value;
-          const lastName = document.querySelector("#lastName").value;
-          const age = document.querySelector("#age").value;
-          const chronicDiseases =
-            document.querySelector("#chronicDiseases").value;
-          const password = document.querySelector("#password").value;
-          const confirmPassword =
-            document.querySelector("#confirmPassword").value;
-
-          // Şifreleri karşılaştır
-          if (password !== confirmPassword) {
-            alert("Şifreler uyuşmuyor!");
-            return;
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            passwordInput.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
           }
+        });
 
-          // Token oluşturma (basit bir örnek)
-          const token = btoa(`${tcKimlik}:${new Date().getTime()}`);
+      document
+        .getElementById("toggleConfirmPassword")
+        .addEventListener("click", function () {
+          const confirmPasswordInput =
+            document.getElementById("confirmPassword");
+          const icon = this;
 
-          // LocalStorage'a kaydet
-          localStorage.setItem("authToken", token);
-
-          // Form verilerini backend'e gönderme
-          fetch("/login.html", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              tcKimlik,
-              firstName,
-              lastName,
-              age,
-              chronicDiseases,
-              password,
-              token,
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.success) {
-                alert("Kayıt başarılı!");
-                window.location.href = "/login.html"; // Yönlendirme
-              } else {
-                alert("Bu TC Kimlik Numarası ile zaten kayıt olunmuş.");
-              }
-            })
-            .catch((error) => console.error("Error:", error));
+          if (confirmPasswordInput.type === "password") {
+            confirmPasswordInput.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            confirmPasswordInput.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
         });
     </script>
   </body>
