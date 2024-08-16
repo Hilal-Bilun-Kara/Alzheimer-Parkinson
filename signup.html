@@ -101,7 +101,7 @@
     <div class="signup-container">
       <h1>Üye Ol</h1>
       <form
-        action="signup_handler.php"
+        action="/signup.html.php"
         method="post"
         onsubmit="return validateForm()"
       >
@@ -222,6 +222,10 @@
           isValid = false;
         } else {
           errorMessage.style.display = "none";
+        }
+
+        if (isValid) {
+          window.location.href = "http://127.0.0.1:5500/index.html";
         }
 
         return isValid; // Return false if any validation fails
