@@ -114,56 +114,7 @@
     </style>
   </head>
   <body class="index-page">
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img
-            src="assets/img/masonry-portfolio/stethoscope-icon.webp"
-            alt=""
-          />
-
-          <h1 class="sitename">ParkinHeimer</h1>
-        </a>
-
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="/#hero" class="active">Anasayfa</a></li>
-            <li><a href="/#about">Hakkımızda</a></li>
-            <li><a href="/#services">Hizmetlerimiz</a></li>
-            <!--   <li><a href="#team">Ekibimiz</a></li> -->
-            <li class="dropdown">
-              <a href="#"
-                ><span>Menü</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
-              ></a>
-              <ul>
-                <li><a href="/folderupload.html">Görüntü Yükle</a></li>
-                <li class="dropdown">
-                  <a href="#"
-                    ><span>Sonuçlarım</span>
-                    <i class="bi bi-chevron-down toggle-dropdown"></i
-                  ></a>
-                  <ul>
-                    <li><a href="#">Alzheimer</a></li>
-                    <li><a href="#">Parkinson</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="/#contact">İletişim</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
-        <a class="btn-getstarted" href="/login.html" id="loginButton"
-          >Üye Ol <b> / </b> Giriş Yap</a
-        >
-      </div>
-    </header>
-
+    <div id="header-container"></div>
     <div class="login-container">
       <h1>Giriş Yap</h1>
       <form action="login_handler.php" method="post">
@@ -186,5 +137,8 @@
         <p>Hesabınız yok mu? <a href="/signup.html">Üye Ol</a></p>
       </div>
     </div>
+
+    <script src="header.js"></script>
+    <script src="language.js"></script>
   </body>
 </html>

@@ -159,7 +159,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 30px;
   margin-right: 8px;
 }
 
@@ -177,10 +177,10 @@ h6 {
   color: var(--contrast-color);
   background: var(--accent-color);
   font-size: 14px;
-  padding: 8px 25px;
-  margin: 0 0 0 30px;
+  padding: 4px 20px;
+  margin: 0 10px 0 20px;
   border-radius: 50px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .header .btn-getstarted:hover,
@@ -280,7 +280,7 @@ h6 {
     position: absolute;
     visibility: hidden;
     left: 14px;
-    top: 130%;
+    top: 70%;
     opacity: 0;
     transition: 0.3s;
     border-radius: 4px;
@@ -793,8 +793,8 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
-  scroll-margin-top: 88px;
+  padding: 20px 10px;
+  scroll-margin-top: 80px;
   overflow: clip;
 }
 
