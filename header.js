@@ -19,21 +19,21 @@ document.addEventListener("DOMContentLoaded", function () {
               <li><a data-key="about" href="#about">Hakkımızda</a></li>
               <li><a data-key="services" href="#services">Hizmetlerimiz</a></li>
               <li class="dropdown">
-                <a data-key="menu" href="#"
-                  ><span>Menü</span>
+                <a href="#"
+                  ><span data-key="menu">Menü</span>
                   <i class="bi bi-chevron-down toggle-dropdown"></i
                 ></a>
                 <ul>
-                  <li><a href="/folderupload.html">Görüntü Yükle</a></li>
-                  <li><a href="/resultspage.html">Sonuçlarım</a></li>
+                  <li><a data-key="uploadimage" href="/folderupload.html">Görüntü Yükle</a></li>
+                  <li><a data-key="myresults" href="/resultspage.html">Sonuçlarım</a></li>
                 </ul>
               </li>
-              <li><a href="#contact">İletişim</a></li>
+              <li><a data-key="contact" href="#contact">İletişim</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>
   
-          <a class="btn-getstarted" href="/login.html" id="loginButton">Üye Ol <b> / </b> Giriş Yap</a>
+          <a data-key="signlogin" class="btn-getstarted" href="/login.html" id="loginButton">Üye Ol <b> / </b> Giriş Yap</a>
 
   <div id="language-selector">
       <select id="language-select">
