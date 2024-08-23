@@ -86,7 +86,7 @@ a:hover {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
-  margin-top: 20px; /* Margin değerlerini optimize ettik */
+  margin-top: 40px; /* Margin değerlerini optimize ettik */
   margin-bottom: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 100%;

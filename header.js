@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
             src="assets/img/masonry-portfolio/stethoscope-icon.webp"
             alt=""
           />
-            <h1 class="sitename">ParkinHeimer</h1>
+            <h1 class="sitename">ParkınHeımer</h1>
           </a>
   
           <nav id="navmenu" class="navmenu">
             <ul>
-              <li><a data-key="home" href="#hero" class="active">Anasayfa</a></li>
-              <li><a data-key="about" href="#about">Hakkımızda</a></li>
-              <li><a data-key="services" href="#services">Hizmetlerimiz</a></li>
+              <li><a data-key="home" href="/#hero" class="active">Anasayfa</a></li>
+              <li><a data-key="about" href="/#about">Hakkımızda</a></li>
+              <li><a data-key="services" href="/#services">Hizmetlerimiz</a></li>
               <li class="dropdown">
                 <a href="#"
                   ><span data-key="menu">Menü</span>
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <li><a data-key="myresults" href="/resultspage.html">Sonuçlarım</a></li>
                 </ul>
               </li>
-              <li><a data-key="contact" href="#contact">İletişim</a></li>
+              <li><a data-key="contact" href="/#contact">İletişim</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>
@@ -52,19 +52,37 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const languageSelect = document.getElementById("language-select");
 
+  // Check if a language is stored in local storage and apply it
+  const storedLanguage = localStorage.getItem("selectedLanguage");
+  if (storedLanguage) {
+    changeLanguage(storedLanguage);
+    languageSelect.value = storedLanguage; // Set the select input to the stored language
+  }
+
   languageSelect.addEventListener("change", function () {
     const selectedLanguage = this.value;
     changeLanguage(selectedLanguage);
   });
 });
 
-function changeLanguage(lang) {
-  // Dil değiştirme işlemini burada yapın
-  console.log("Dil değiştirildi:", lang);
+function changeLanguage(language) {
+  // Save the selected language to local storage
+  localStorage.setItem("selectedLanguage", language);
 
-  // Örneğin, dil dosyalarını yüklemek veya i18n kütüphanesi kullanmak gerekebilir
-  // Bu işlem dil değiştirme kütüphanenize bağlı olarak değişir
+  // Update the page content based on the selected language
+  document.documentElement.setAttribute("lang", language);
 
-  // Sayfa yenileme veya gerekli değişiklikler yapılabilir
-  // location.reload(); gibi bir sayfa yenileme işlemi yapılabilir
+  // Optional: update the body class based on the language
+  document.body.classList.toggle("tr", language === "tr");
+  document.body.classList.toggle("en", language === "en");
+
+  // Here you would call the function to update text content
+  // For example, using a function to translate based on the `data-key` attribute
+  translatePageContent(language);
 }
+
+// Örneğin, dil dosyalarını yüklemek veya i18n kütüphanesi kullanmak gerekebilir
+// Bu işlem dil değiştirme kütüphanenize bağlı olarak değişir
+
+// Sayfa yenileme veya gerekli değişiklikler yapılabilir
+// location.reload(); gibi bir sayfa yenileme işlemi yapılabilir

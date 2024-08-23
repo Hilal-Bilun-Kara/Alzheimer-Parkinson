@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Giriş Yap</title>
+    <title data-key="login">Giriş Yap</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="" />
@@ -116,25 +116,28 @@
   <body class="index-page">
     <div id="header-container"></div>
     <div class="login-container">
-      <h1>Giriş Yap</h1>
+      <h1 data-key="login">Giriş Yap</h1>
       <form action="login_handler.php" method="post">
-        <label for="tcKimlik">TC Kimlik Numarası:</label>
+        <label for="email">E-mail:</label>
         <input
-          type="text"
-          id="tcKimlik"
-          name="tcKimlik"
+          type="email"
+          id="email"
+          name="email"
           maxlength="11"
           pattern="\d{11}"
           required
         />
 
-        <label for="password">Şifre:</label>
+        <label for="password" data-key="password">Şifre:</label>
         <input type="password" id="password" name="password" required />
 
-        <button type="submit">Giriş Yap</button>
+        <button type="submit" data-key="login">Giriş Yap</button>
       </form>
       <div class="signup-link">
-        <p>Hesabınız yok mu? <a href="/signup.html">Üye Ol</a></p>
+        <p>
+          <span data-key="dontaccount">Hesabınız yok mu?</span>
+          <a href="/signup.html" data-key="signup">Üye Ol</a>
+        </p>
       </div>
     </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Sonuçlarım</title>
+    <title data-key="myresults">Sonuçlarım</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="" />
@@ -104,46 +104,7 @@
     </style>
   </head>
   <body class="index-page">
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img
-            src="assets/img/masonry-portfolio/stethoscope-icon.webp"
-            alt=""
-          />
-
-          <h1 class="sitename">ParkinHeimer</h1>
-        </a>
-
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="/#hero" class="active">Anasayfa</a></li>
-            <li><a href="/#about">Hakkımızda</a></li>
-            <li><a href="/#services">Hizmetlerimiz</a></li>
-            <!--   <li><a href="#team">Ekibimiz</a></li> -->
-            <li class="dropdown">
-              <a href="#"
-                ><span>Menü</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
-              ></a>
-              <ul>
-                <li><a href="/folderupload.html">Görüntü Yükle</a></li>
-                <li><a href="/resultspage.html">Sonuçlarım</a></li>
-              </ul>
-            </li>
-            <li><a href="/#contact">İletişim</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
-        <a class="btn-getstarted" href="/login.html" id="loginButton"
-          >Üye Ol <b> / </b> Giriş Yap</a
-        >
-      </div>
-    </header>
+    <div id="header-container"></div>
 
     <div class="container">
       <div class="tabs">
@@ -151,7 +112,7 @@
         <div class="tab" id="alzheimer-tab">Alzheimer</div>
       </div>
       <div class="results" id="parkinson-results">
-        <h2>Parkinson Results</h2>
+        <h2>Parkinson Sonuçları</h2>
         <div class="result-item">
           <p><strong>Hasta Adı:</strong> Ali</p>
           <p><strong>Soyadı:</strong> Veli</p>
@@ -166,7 +127,7 @@
         </div>
       </div>
       <div class="results" id="alzheimer-results">
-        <h2>Alzheimer Results</h2>
+        <h2>Alzheimer <span data-key="result">Sonuçları</span></h2>
         <div class="result-item">
           <p><strong>Hasta Adı:</strong> Mehmet</p>
           <p><strong>Soyadı:</strong> Kaya</p>
@@ -206,5 +167,6 @@
       parkinsonTab.click();
     </script>
     <script src="language.js"></script>
+    <script src="header.js"></script>
   </body>
 </html>

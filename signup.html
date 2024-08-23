@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Üye Ol</title>
+    <title data-key="signup">Üye Ol</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="" />
@@ -54,52 +54,34 @@
     <div id="header-container"></div>
 
     <div class="signup-container">
-      <h1>Üye Ol</h1>
+      <h1 data-key="signup">Üye Ol</h1>
       <form
-        action="/signup.html.php"
+        action="/signup.html"
         method="post"
         onsubmit="return validateForm()"
       >
-        <label for="firstName">İsim:</label>
+        <label for="firstName" data-key="name">İsim:</label>
         <input type="text" id="firstName" name="firstName" required />
 
-        <label for="lastName">Soyisim:</label>
+        <label for="lastName" data-key="surname">Soyisim:</label>
         <input type="text" id="lastName" name="lastName" required />
 
-        <label for="poliklinik">İlgili Poliklinik<b class="star">*</b>:</label>
-        <select
-          class="w-100 p-2 mb-2"
-          id="poliklinik"
-          name="poliklinik"
-          required
-        >
-          <option value="">Poliklinik seçin...</option>
-          <option value="kardiyoloji">Kardiyoloji</option>
-          <option value="beyin ve sinir cerrahisi">
-            Beyin ve Sinir Cerrahisi
-          </option>
-          <option value="kalp ve damar cerrahisi">
-            Kalp ve Damar Cerrahisi
-          </option>
-          <option value="nöroloji">Nöroloji</option>
-          <option value="klinik nörofizyoloji">Klinik Nörofizyoloji</option>
-          <option value="cerrahi onkolojisi">Cerrahi Onkolojisi</option>
-        </select>
-        <span id="error-message" class="error">
-          Lütfen bir poliklinik seçin.
-        </span>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
 
-        <label for="password">Şifre:</label>
+        <label for="password" data-key="password">Şifre:</label>
         <div class="password-container">
           <input type="password" id="password" name="password" required />
           <i class="fas fa-eye" id="togglePassword"></i>
         </div>
-        <span id="passwordError" class="error">
+        <span id="passwordError" class="error" data-key="passworderror">
           Şifre en az 8 karakter, bir büyük harf, bir küçük harf ve bir rakam
           içermelidir.
         </span>
 
-        <label for="confirmPassword">Şifreyi Onaylayın:</label>
+        <label for="confirmPassword" data-key="confirmpassword"
+          >Şifreyi Doğrulayın:</label
+        >
         <div class="password-container">
           <input
             type="password"
@@ -109,13 +91,21 @@
           />
           <i class="fas fa-eye" id="toggleConfirmPassword"></i>
         </div>
-        <span id="confirmPasswordError" class="error">Şifreler uyuşmuyor.</span>
+        <span
+          id="confirmPasswordError"
+          class="error"
+          data-key="confirmpassworderror"
+          >Şifreler uyuşmuyor.</span
+        >
 
-        <button type="submit">Üye Ol</button>
+        <button type="submit" data-key="signup">Üye Ol</button>
       </form>
 
       <div class="login-link">
-        <p>Zaten hesabınız var mı? <a href="/login.html">Giriş Yap</a></p>
+        <p>
+          <span data-key="haveanaccount">Zaten hesabınız var mı?</span>
+          <a href="/login.html" data-key="login">Giriş Yap</a>
+        </p>
       </div>
     </div>
 
@@ -142,7 +132,6 @@
         const password = document.getElementById("password").value;
         const confirmPassword =
           document.getElementById("confirmPassword").value;
-        const poliklinik = document.getElementById("poliklinik").value;
 
         const passwordError = document.getElementById("passwordError");
         const confirmPasswordError = document.getElementById(
@@ -169,18 +158,6 @@
           isValid = false;
         } else {
           confirmPasswordError.style.display = "none";
-        }
-
-        // Validate poliklinik selection
-        if (poliklinik === "") {
-          errorMessage.style.display = "block";
-          isValid = false;
-        } else {
-          errorMessage.style.display = "none";
-        }
-
-        if (isValid) {
-          window.location.href = "http://127.0.0.1:5500/index.html";
         }
 
         return isValid; // Return false if any validation fails
