@@ -78,7 +78,7 @@
         border-radius: 8px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         width: 100%;
-        max-width: 600px;
+        max-width: 450px;
         margin-top: 50px;
       }
 
@@ -107,31 +107,23 @@
   <body class="index-page">
     <div id="header-container"></div>
 
-    <div class="upload-container mb-4">
+    <div class="upload-container mb-4 flex-column">
       <h1 data-key="uploadimage">Görüntü Yükle</h1>
       <form
         action="upload_handler.php"
         method="post"
         enctype="multipart/form-data"
       >
-        <label for="imageUpload" data-key="selectimage">Görüntü Seçin:</label>
-        <input
-          type="file"
-          id="imageUpload"
-          name="imageUpload"
-          accept="image/*"
-          required
-        />
-        <button
-          type="file"
-          name="imageUpload"
-          required
-          id="customFileButton"
-          data-key="selectfile"
-        >
-          Dosya Seç
-        </button>
-
+        <div>
+          <input
+            type="file"
+            class="mb-4"
+            id="imageUpload"
+            name="imageUpload"
+            accept="image/*"
+            required
+          />
+        </div>
         <button type="submit" data-key="upload">Yükle</button>
       </form>
     </div>

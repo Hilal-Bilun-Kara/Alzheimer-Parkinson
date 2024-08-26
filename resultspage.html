@@ -103,68 +103,76 @@
       }
     </style>
   </head>
+
   <body class="index-page">
     <div id="header-container"></div>
 
-    <div class="container">
-      <div class="tabs">
-        <div class="tab" id="parkinson-tab">Parkinson</div>
-        <div class="tab" id="alzheimer-tab">Alzheimer</div>
-      </div>
-      <div class="results" id="parkinson-results">
-        <h2>Parkinson Sonuçları</h2>
-        <div class="result-item">
-          <p><strong>Hasta Adı:</strong> Ali</p>
-          <p><strong>Soyadı:</strong> Veli</p>
-          <p><strong>TC:</strong> 12345678901</p>
-          <button class="view-details">Görüntüle</button>
-        </div>
-        <div class="result-item">
-          <p><strong>Hasta Adı:</strong> Ayşe</p>
-          <p><strong>Soyadı:</strong> Yılmaz</p>
-          <p><strong>TC:</strong> 98765432109</p>
-          <button class="view-details">Görüntüle</button>
-        </div>
-      </div>
+    <div class="container mt-4">
       <div class="results" id="alzheimer-results">
-        <h2>Alzheimer <span data-key="result">Sonuçları</span></h2>
-        <div class="result-item">
-          <p><strong>Hasta Adı:</strong> Mehmet</p>
-          <p><strong>Soyadı:</strong> Kaya</p>
-          <p><strong>TC:</strong> 45678912345</p>
-          <button class="view-details">Görüntüle</button>
-        </div>
-        <div class="result-item">
-          <p><strong>Hasta Adı:</strong> Fatma</p>
-          <p><strong>Soyadı:</strong> Demir</p>
-          <p><strong>TC:</strong> 32165498709</p>
-          <button class="view-details">Görüntüle</button>
-        </div>
+        <h2>Alzheimer Sonuçları</h2>
+        <!-- Results will be dynamically inserted here -->
       </div>
     </div>
 
     <script>
-      const parkinsonTab = document.getElementById("parkinson-tab");
-      const alzheimerTab = document.getElementById("alzheimer-tab");
-      const parkinsonResults = document.getElementById("parkinson-results");
-      const alzheimerResults = document.getElementById("alzheimer-results");
-
-      parkinsonTab.addEventListener("click", function () {
-        parkinsonResults.style.display = "block";
-        alzheimerResults.style.display = "none";
-        parkinsonTab.classList.add("active");
-        alzheimerTab.classList.remove("active");
+      // JavaScript to directly show Alzheimer results
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure Alzheimer results are displayed on page load
+        const alzheimerResults = document.getElementById("alzheimer-results");
+        if (alzheimerResults) {
+          alzheimerResults.style.display = "block"; // Make sure this section is visible
+        }
       });
+      // Show Alzheimer results by default
+      const patients = [
+        { firstName: "Zeynep", lastName: "Korkmaz", tc: "12345678901" },
+        { firstName: "Bahadır", lastName: "Yılmaz", tc: "98765432109" },
+      ];
 
-      alzheimerTab.addEventListener("click", function () {
-        parkinsonResults.style.display = "none";
-        alzheimerResults.style.display = "block";
-        alzheimerTab.classList.add("active");
-        parkinsonTab.classList.remove("active");
+      // Function to mask names
+      function maskName(firstName, lastName) {
+        // Ensure at least 3 characters remain unmasked in the first name
+        let maskedFirstName;
+        if (firstName.length > 3) {
+          maskedFirstName = "***" + firstName.slice(3);
+        } else {
+          maskedFirstName = "*".repeat(firstName.length); // Mask the entire name if it's 3 characters or less
+        }
+
+        // Ensure at least 2 characters remain unmasked in the last name
+        let maskedLastName;
+        if (lastName.length > 2) {
+          maskedLastName = lastName.slice(0, 2) + "***";
+        } else {
+          maskedLastName = "*".repeat(lastName.length); // Mask the entire name if it's 2 characters or less
+        }
+
+        return { maskedFirstName, maskedLastName };
+      }
+      // Function to display results
+      function displayResults(patients) {
+        const resultsContainer = document.getElementById("alzheimer-results");
+        patients.forEach((patient) => {
+          const { maskedFirstName, maskedLastName } = maskName(
+            patient.firstName,
+            patient.lastName
+          );
+
+          const resultItem = document.createElement("div");
+          resultItem.classList.add("result-item");
+          resultItem.innerHTML = `
+      <p><strong>Hasta Adı:</strong> ${maskedFirstName}</p>
+      <p><strong>Soyadı:</strong> ${maskedLastName}</p>
+      <p><strong>TC:</strong> ${patient.tc}</p>
+      <button class="view-details">Görüntüle</button>
+    `;
+          resultsContainer.appendChild(resultItem);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        displayResults(patients);
       });
-
-      // Show Parkinson results by default
-      parkinsonTab.click();
     </script>
     <script src="language.js"></script>
     <script src="header.js"></script>
