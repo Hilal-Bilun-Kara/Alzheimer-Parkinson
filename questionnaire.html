@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Risk Score Survey</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="questionnaire.css" />
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <style>
+      label {
+        margin-right: 5px;
+        font-weight: bold;
+        color: #37517e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4 color-[#37517e]">Risk Puan Anketi</h1>
+      <form id="surveyForm" class="mt-4">
+        <div class="form-group">
+          <label for="age" class="mb-2">Yaş :</label>
+          <input type="number" id="age" name="age" required />
+        </div>
+
+        <div class="form-group">
+          <label for="sex" class="mb-2">Cinsiyet :</label>
+          <select id="sex" name="sex">
+            <option value="Erkek">Erkek</option>
+            <option value="Kadın">Kadın</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="hypertension" class="mb-2"
+            >Hipertansiyonunuz var mı? :</label
+          >
+          <select id="hypertension" name="hypertension">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="hypercholesterolemia" class="mb-2"
+            >Kolesterol sorununuz var mı? :</label
+          >
+          <select id="hypercholesterolemia" name="hypercholesterolemia">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="obesity" class="mb-2">Kilonuz :</label>
+          <select id="obesity" name="obesity">
+            <option value="normal">Normal</option>
+            <option value="fazla kilolu">Fazla Kilolu</option>
+            <option value="obez">Obez</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="physicalActivity" class="mb-2"
+            >Fiziksel olarak aktif misiniz? :</label
+          >
+          <select id="physicalActivity" name="physicalActivity">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="diabetes" class="mb-2">Diyabetiniz var mı? :</label>
+          <select id="diabetes" name="diabetes">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="depression" class="mb-2">Depresyonunuz var mı? :</label>
+          <select id="depression" name="depression">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="smoking" class="mb-2">Sigara içiyor musunuz? :</label>
+          <select id="smoking" name="smoking">
+            <option value="asla">Asla</option>
+            <option value="geçmişte">Geçmişte</option>
+            <option value="içiyorum">İçiyorum</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="alcohol" class="mb-2">Alkol kullanıyor musunuz? :</label>
+          <select id="alcohol" name="alcohol">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cognitiveActivity" class="mb-2"
+            >Kognitif aktiflik seviyeniz :</label
+          >
+          <select id="cognitiveActivity" name="cognitiveActivity">
+            <option value="yüksek">Yüksek</option>
+            <option value="düşük">Düşük</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="healthyDiet" class="mb-2"
+            >Sağlıklı besleniyor musunuz? :</label
+          >
+          <select id="healthyDiet" name="healthyDiet">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="coronaryHeartDisease" class="mb-2"
+            >Kardiyovasküler bir hastalığınız var mı? :</label
+          >
+          <select id="coronaryHeartDisease" name="coronaryHeartDisease">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="renalDysfunction" class="mb-2"
+            >Böbrek yetmezliğiniz var mı? :</label
+          >
+          <select id="renalDysfunction" name="renalDysfunction">
+            <option value="evet">Evet</option>
+            <option value="hayır">Hayır</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="mb-2" onclick="calculateRiskScores()">
+            Skorları Hesapla
+          </button>
+        </div>
+      </form>
+      <div id="results"></div>
+      <h3>Bilgilendirme:</h3>
+      <span
+        ><b>- CAIDE</b>
+        <p>
+          Orta yaşta 20 yıl sonraki demans risk tahmini yapar. 
+           <p> *Düşük risk: 0 puan</p> <p>*Orta risk: 7 puan</p> <p>*Yüksek risk: 14 Puan</p>
+        </span>
+        <span
+        ><b>- LIBRA</b>
+        <p>
+            Orta ileri yaştakiler için 16 yıllık demans risk tahmini eder. LIBRA skorları ayrıca, cinsiyet ve eğitim seviyesi fark etmeksizin, yeni gelişen bilişsel bozukluk riskinin artışıyla ilişkilendirilmiştir.
+          
+        </p> *Düşük risk: [−5.9; −1.0] </p> <p>*Orta risk: [−1; 2.7]</p> <p>*Yüksek risk:  [2.7; 11.2]  </p>
+        </span>
+        <span
+        ><b>- ANU-ADRI</b>
+        <p>
+            60 yaşından büyük kişiler için tanımlanmıştır. ANU-ADRI ayrıca Alzheimer için genetik risk skoru ile ilişkisi ve beyin ölçümleri ile korelasyonu açısından da incelenmiştir.
+        </p> *Düşük risk: -20 - 0</p> <p>*Orta risk: 0-20</p> <p>*Yüksek risk: 20-40 </p>
+        </span>
+    </div>
+
+    <script>
+      function calculateRiskScores() {
+        const age = parseInt(document.getElementById("age").value);
+        const sex = document.getElementById("sex").value.toLowerCase();
+        const hypertension =
+          document.getElementById("hypertension").value === "evet";
+        const hypercholesterolemia =
+          document.getElementById("hypercholesterolemia").value === "evet";
+        const obesity = document.getElementById("obesity").value;
+        const physicalActivity =
+          document.getElementById("physicalActivity").value === "evet";
+        const diabetes = document.getElementById("diabetes").value === "evet";
+        const depression =
+          document.getElementById("depression").value === "evet";
+        const smoking = document.getElementById("smoking").value;
+        const alcohol = document.getElementById("alcohol").value === "evet";
+        const cognitiveActivity =
+          document.getElementById("cognitiveActivity").value;
+        const healthyDiet =
+          document.getElementById("healthyDiet").value === "evet";
+        const coronaryHeartDisease =
+          document.getElementById("coronaryHeartDisease").value === "evet";
+        const renalDysfunction =
+          document.getElementById("renalDysfunction").value === "evet";
+
+        let scoreCAIDE = 0;
+        let scoreANU_ADRI = 0;
+        let scoreLIBRA = 0;
+
+        // CAIDE Skor Hesaplaması
+        if (age < 47) {
+          scoreCAIDE += 0;
+        } else if (age >= 47 && age <= 53) {
+          scoreCAIDE += 3;
+        } else {
+          scoreCAIDE += 4;
+        }
+
+        if (sex === "kadın") {
+          scoreCAIDE += 0;
+        } else {
+          scoreCAIDE += 1;
+        }
+
+        scoreCAIDE += hypertension ? 2 : 0;
+        scoreCAIDE += hypercholesterolemia ? 2 : 0;
+
+        if (obesity === "normal") {
+          scoreCAIDE += 0;
+        } else if (obesity === "fazla kilolu") {
+          scoreCAIDE += 1;
+        } else {
+          scoreCAIDE += 2;
+        }
+
+        scoreCAIDE += physicalActivity ? 0 : 1;
+        scoreCAIDE += diabetes ? 3 : 0;
+
+        // ANU-ADRI Skor Hesaplaması
+        scoreANU_ADRI += diabetes ? 12 : 0;
+        scoreANU_ADRI += depression ? 9 : 0;
+
+        if (smoking === "içiyorum") {
+          scoreANU_ADRI += 9;
+        } else if (smoking === "geçmişte") {
+          scoreANU_ADRI += 4;
+        } else {
+          scoreANU_ADRI += 0;
+        }
+
+        scoreANU_ADRI += alcohol ? 0 : 5;
+
+        if (cognitiveActivity === "yüksek") {
+          scoreANU_ADRI += 0;
+        } else {
+          scoreANU_ADRI += 6;
+        }
+
+        scoreANU_ADRI += healthyDiet ? 0 : 6;
+
+        // LIBRA Skor Hesaplaması
+        scoreLIBRA += hypertension ? 1 : 0;
+        scoreLIBRA += hypercholesterolemia ? 1 : 0;
+        scoreLIBRA += obesity === "obez" ? 1 : 0;
+        scoreLIBRA += diabetes ? 1 : 0;
+        scoreLIBRA += smoking === "içiyorum" ? 1 : 0;
+        scoreLIBRA += coronaryHeartDisease ? 1 : 0;
+        scoreLIBRA += renalDysfunction ? 1 : 0;
+        scoreLIBRA += depression ? 1 : 0;
+
+        const resultDiv = document.getElementById("results");
+        resultDiv.innerHTML = "<h2>Sonuçlar:</h2>";
+
+        if (age < 60) {
+          resultDiv.innerHTML += `<p>CAIDE Score: ${scoreCAIDE}</p>`;
+        } else {
+          resultDiv.innerHTML += `<p>ANU-ADRI Score: ${scoreANU_ADRI}</p>`;
+        }
+
+        resultDiv.innerHTML += `<p>LIBRA Score: ${scoreLIBRA}</p>`;
+      }
+    </script>
+    <script src="language.js"></script>
+  </body>
+</html>

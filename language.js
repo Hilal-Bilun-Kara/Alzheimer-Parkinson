@@ -72,6 +72,7 @@ const translations = {
     login: "Log In",
     dontaccount: "Don't have an account?",
     selectfile: "Select File",
+    riskscore: "Take Our Risk Score Survey",
   },
   tr: {
     home: "Anasayfa",
@@ -145,6 +146,7 @@ const translations = {
     login: "Giriş Yap",
     selectfile: "Dosya Seç",
     dontaccount: "Hesabınız yok mu?",
+    riskscore: "Risk Skor Anketimize Katılın",
   },
 };
 

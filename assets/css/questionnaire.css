@@ -1,0 +1,108 @@
+body {
+  font-family: "Comic Sans MS", sans-serif;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100wh;
+  color: #333;
+}
+
+/* Konteyner Stili */
+.container {
+  width: 450px;
+  padding: 300px;
+  background-color: #37517e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+/* Başlık Stili */
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #ff6347;
+  font-weight: bold;
+}
+
+/* Form Grubu Stili */
+.form-group {
+  color: #37517e;
+  margin-bottom: 20%;
+  text-align: left;
+}
+
+/* Etiket Stili */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: blue;
+}
+
+/* Giriş Alanı ve Seçim Kutusu Stili */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  font-size: 16px;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: #ff6347;
+  outline: none;
+}
+
+/* Buton Stili */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #e5533d;
+  transform: translateY(-2px);
+}
+
+/* Sonuç Alanı Stili */
+#results {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #ffe4e1;
+  border-radius: 8px;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Stil */
+@media (max-width: 500px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
